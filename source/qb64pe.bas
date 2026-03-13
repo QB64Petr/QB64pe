@@ -54,7 +54,7 @@ Dim ExecLevel(255), ExecCounter As Integer
 ReDim Shared UserDefine(1, 100) As String '0 element is the name, 1 element is the string value
 ReDim Shared InvalidLine(10000) As _Byte 'True for lines to be excluded due to preprocessor commands
 Dim DefineElse(255) As _Byte
-Dim Shared UserDefineCount As Integer, UserDefineCountPresets As Integer, UserDefineList$, UserDefineListPresets$
+Dim Shared UserDefineCount As Integer, UserDefineCountPresets As Integer, UserDefineList$, UserDefineListPresets$ 
 UserDefineListPresets$ = "@DEFINED@UNDEFINED@WINDOWS@WIN@LINUX@MAC@MACOSX@32BIT@64BIT@VERSION@_QB64PE_@_ARM_@"
 UserDefine(0, 0) = "WINDOWS": UserDefine(0, 1) = "WIN"
 UserDefine(0, 2) = "LINUX"
@@ -18919,7 +18919,7 @@ Function evaluatetotyp$ (a2$, targettyp As Long)
     ' Address/size/_MEM helper requests are the places where a static array member inside a TYPE may be
     ' referenced as a whole block. We enable the special parser mode only for those target types so that
     ' the old "must provide an index" behaviour remains intact in ordinary expressions.
-    If targettyp = -2 Or targettyp = -4 Or targettyp = -5 Or targettyp = -6 Or targettyp = -7 Or targettyp = -8 Then
+    If targettyp = -2 Or targettyp = -4 Or targettyp = -6 Or targettyp = -7 Or targettyp = -8 Then
         allow_bare_member_array = -1
     End If
 
