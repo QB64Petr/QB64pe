@@ -1,5 +1,5 @@
 'All variables will be of type LONG unless explicitly defined
-DefLng A-Z
+DefLng A-Z 
 
 'All arrays will be dynamically allocated so they can be REDIM-ed
 '$Dynamic
