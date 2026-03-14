@@ -1,5 +1,5 @@
 'All variables will be of type LONG unless explicitly defined
-DefLng A-Z 
+DefLng A-Z
 
 'All arrays will be dynamically allocated so they can be REDIM-ed
 '$Dynamic
@@ -54,7 +54,7 @@ Dim ExecLevel(255), ExecCounter As Integer
 ReDim Shared UserDefine(1, 100) As String '0 element is the name, 1 element is the string value
 ReDim Shared InvalidLine(10000) As _Byte 'True for lines to be excluded due to preprocessor commands
 Dim DefineElse(255) As _Byte
-Dim Shared UserDefineCount As Integer, UserDefineCountPresets As Integer, UserDefineList$, UserDefineListPresets$ 
+Dim Shared UserDefineCount As Integer, UserDefineCountPresets As Integer, UserDefineList$, UserDefineListPresets$
 UserDefineListPresets$ = "@DEFINED@UNDEFINED@WINDOWS@WIN@LINUX@MAC@MACOSX@32BIT@64BIT@VERSION@_QB64PE_@_ARM_@"
 UserDefine(0, 0) = "WINDOWS": UserDefine(0, 1) = "WIN"
 UserDefine(0, 2) = "LINUX"
@@ -4012,7 +4012,7 @@ Do
             Next
             layoutdone = 1: If Len(layout$) Then layout$ = layout$ + sp + l$ Else layout$ = l$
         Else
-            l$ = getelement(ca$, 1)
+            l$ = getelement$(ca$, 1)
             ii = 2
             If ii < n Then
                 If getelement$(a$, ii) = "(" Then
@@ -4059,7 +4059,7 @@ Do
 
     If firstelement$ = "TYPE" Then
         If n <> 2 Then a$ = "Expected TYPE type-name": GoTo errmes
-        l$ = SCase$("Type") + sp + getelement(ca$, 2)
+        l$ = SCase$("Type") + sp + getelement$(ca$, 2)
         layoutdone = 1: If Len(layout$) Then layout$ = layout$ + sp + l$ Else layout$ = l$
         definingtype = 1
         definingtypeerror = linenumber
@@ -8116,7 +8116,7 @@ Do
 
             If FindArray(var$) Then
                 If Error_Happened Then GoTo errmes
-                l$ = l$ + sp + RTrim$(id.cn) + ls$
+                l$ = l$ + sp + CompactMemberRefLayout$(RTrim$(id.cn) + ls$)
                 'erase the array
                 clearerase:
                 n$ = RTrim$(id.callname)
@@ -8153,8 +8153,16 @@ Do
                     clear_array_udt_varstrings n$, udt, 0, bytesperelement$, acc$
                     WriteBufLine MainTxtBuf, acc$
                     WriteBufLine MainTxtBuf, "}"
+                ElseIf (id.arraytype And ISSTRING) <> 0 And (id.arraytype And ISFIXEDLENGTH) <> 0 Then
+                    'fixed-length strings reset to spaces, not NUL bytes
+                    WriteBufRawData MainTxtBuf, "memset((void*)(" + n$ + "[0]),32,"
+                    For i2 = 1 To Abs(id.arrayelements)
+                        If i2 <> 1 Then WriteBufRawData MainTxtBuf, "*"
+                        WriteBufRawData MainTxtBuf, n$ + "[" + _ToStr$(i2 * 4 - 4 + 5) + "]"
+                    Next
+                    WriteBufLine MainTxtBuf, "*" + bytesperelement$ + ");"
                 Else
-                    'numeric / fixed-length / plain UDT
+                    'numeric / plain fixed-size UDT
                     'clear array
                     WriteBufRawData MainTxtBuf, "memset((void*)(" + n$ + "[0]),0,"
                     For i2 = 1 To Abs(id.arrayelements)
@@ -8241,7 +8249,7 @@ Do
                         If id.t = 0 Then base$ = "ARRAY_" + base$ + "[0]"
                         base$ = scope$ + base$
                         ptr$ = "((char*)" + base$ + "+(" + offset$ + "))"
-                        l$ = l$ + sp + var$
+                        l$ = l$ + sp + CompactMemberRefLayout$(var$)
 
                         memberbytes = udtesize(E) \ 8
                         memberelems = udtearrayelements(E)
@@ -8251,6 +8259,8 @@ Do
                             For i2 = 0 To memberelems - 1
                                 WriteBufLine MainTxtBuf, "(*(qbs**)(" + ptr$ + "+" + _ToStr$(i2 * elementbytes) + "))->len=0;"
                             Next
+                        ElseIf (udtetype(E) And ISSTRING) <> 0 And (udtetype(E) And ISFIXEDLENGTH) <> 0 Then
+                            WriteBufLine MainTxtBuf, "memset((void*)" + ptr$ + ",32," + _ToStr$(memberbytes) + ");"
                         ElseIf (udtetype(E) And ISUDT) <> 0 And udtxvariable(udtetype(E) And 511) Then
                             For i2 = 0 To memberelems - 1
                                 clear_udt_with_varstrings ptr$, udtetype(E) And 511, MainTxtBuf, i2 * elementbytes
@@ -14568,15 +14578,15 @@ Function UDTArrayIndexExpr$ (indexes$, dimension_count As Long, descriptor$)
 
             If found_dimensions = 1 Then
                 If CheckingOn Then
-                    result_expr = result_expr + "array_check((" + idx_src$ + ")-" + dim_lower_txt$ + "," + dim_elements_txt$ + ")+"
+                    result_expr = result_expr + "array_check((" + idx_src$ + ")-(" + dim_lower_txt$ + ")," + dim_elements_txt$ + ")+"
                 Else
-                    result_expr = result_expr + "((" + idx_src$ + ")-" + dim_lower_txt$ + ")+"
+                    result_expr = result_expr + "((" + idx_src$ + ")-(" + dim_lower_txt$ + "))+"
                 End If
             Else
                 If CheckingOn Then
-                    result_expr = result_expr + "array_check((" + idx_src$ + ")-" + dim_lower_txt$ + "," + dim_elements_txt$ + ")*" + stride_txt$ + "+"
+                    result_expr = result_expr + "array_check((" + idx_src$ + ")-(" + dim_lower_txt$ + ")," + dim_elements_txt$ + ")*" + stride_txt$ + "+"
                 Else
-                    result_expr = result_expr + "((" + idx_src$ + ")-" + dim_lower_txt$ + ")*" + stride_txt$ + "+"
+                    result_expr = result_expr + "((" + idx_src$ + ")-(" + dim_lower_txt$ + "))*" + stride_txt$ + "+"
                 End If
             End If
 
@@ -14590,6 +14600,51 @@ Function UDTArrayIndexExpr$ (indexes$, dimension_count As Long, descriptor$)
     If result_expr = "" Then Give_Error "Array index missing": Exit Function
 
     UDTArrayIndexExpr$ = Left$(result_expr, Len(result_expr) - 1)
+End Function
+
+Function CompactMemberRefLayout$ (src As String)
+    Dim outtxt As String
+    Dim tok As String
+    Dim prevtok As String
+    Dim needspace As Long
+    Dim ntok As Long
+    Dim idx As Long
+
+    outtxt = ""
+    prevtok = ""
+    needspace = 0
+    ntok = numelements(src)
+
+    For idx = 1 To ntok
+        tok = getelement$(src, idx)
+        If tok = "," Then
+            outtxt = RTrim$(outtxt) + ", "
+            needspace = 0
+        ElseIf tok = "." Then
+            outtxt = RTrim$(outtxt) + "."
+            needspace = 0
+        ElseIf tok = "(" Then
+            outtxt = RTrim$(outtxt) + "("
+            needspace = 0
+        ElseIf tok = ")" Then
+            outtxt = RTrim$(outtxt) + ")"
+            needspace = 1
+        Else
+            If Len(outtxt) = 0 Then
+                outtxt = tok
+            ElseIf needspace Then
+                outtxt = outtxt + sp + tok
+            ElseIf prevtok = "." Or prevtok = "(" Then
+                outtxt = outtxt + tok
+            Else
+                outtxt = outtxt + tok
+            End If
+            needspace = 1
+        End If
+        prevtok = tok
+    Next
+
+    CompactMemberRefLayout$ = outtxt
 End Function
 
 Function UDTArrayBoundExpr$ (descriptor$, dimension_count As Long, dimension_expr$, want_upper As Long)
@@ -18919,7 +18974,7 @@ Function evaluatetotyp$ (a2$, targettyp As Long)
     ' Address/size/_MEM helper requests are the places where a static array member inside a TYPE may be
     ' referenced as a whole block. We enable the special parser mode only for those target types so that
     ' the old "must provide an index" behaviour remains intact in ordinary expressions.
-    If targettyp = -2 Or targettyp = -4 Or targettyp = -6 Or targettyp = -7 Or targettyp = -8 Then
+    If targettyp = -2 Or targettyp = -4 Or targettyp = -5 Or targettyp = -6 Or targettyp = -7 Or targettyp = -8 Then
         allow_bare_member_array = -1
     End If
 
@@ -18972,7 +19027,11 @@ Function evaluatetotyp$ (a2$, targettyp As Long)
                     evaluatetotyp$ = "byte_element((uint64)" + dst$ + "," + bytes$ + "," + NewByteElement$ + ")"
                     Exit Function
                 End If
-                bytes$ = _ToStr$(udtesize(E) \ 8)
+                If udtearrayelements(E) Then
+                    bytes$ = _ToStr$(udt_array_member_bytes(E))
+                Else
+                    bytes$ = _ToStr$(udtesize(E) \ 8)
+                End If
             End If
             evaluatetotyp$ = "byte_element((uint64)" + dst$ + "," + bytes$ + "," + NewByteElement$ + ")"
             If targettyp = -5 Then evaluatetotyp$ = bytes$
