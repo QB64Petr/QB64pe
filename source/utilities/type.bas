@@ -1,4 +1,3 @@
-
 FUNCTION typevalue2symbol$ (t)
 
     IF t AND ISSTRING THEN
@@ -665,7 +664,8 @@ SUB free_udt_varstrings (n$, udt, buf, base_offset)
 END SUB
 
 SUB clear_udt_with_varstrings (n$, udt, buf, base_offset)
-    IF NOT udtxvariable(udt) THEN EXIT SUB
+    ' Clear one UDT value member-by-member. This covers numeric members, fixed-length strings,
+    ' variable-length strings, nested UDTs, and inline static member arrays.
     element = udtxnext(udt)
     offset = base_offset
     DO WHILE element
@@ -678,17 +678,13 @@ SUB clear_udt_with_varstrings (n$, udt, buf, base_offset)
                         WriteBufLine buf, "(*(qbs**)(((char*)" + n$ + ")+" + STR$(array_offset) + "))->len=0;"
                     NEXT
                 ELSE
-                    WriteBufLine buf, "memset((char*)" + n$ + "+" + STR$(offset) + ",0," + STR$(udtesize(element) \ 8) + ");"
+                    WriteBufLine buf, "memset((char*)" + n$ + "+" + STR$(offset) + ",32," + STR$(udtesize(element) \ 8) + ");"
                 END IF
             ELSEIF udtetype(element) AND ISUDT THEN
-                IF udtxvariable(udtetype(element) AND 511) THEN
-                    FOR array_i = 0 TO udtearrayelements(element) - 1
-                        array_offset = offset + array_i * elem_bytes
-                        clear_udt_with_varstrings n$, udtetype(element) AND 511, buf, array_offset
-                    NEXT
-                ELSE
-                    WriteBufLine buf, "memset((char*)" + n$ + "+" + STR$(offset) + ",0," + STR$(udtesize(element) \ 8) + ");"
-                END IF
+                FOR array_i = 0 TO udtearrayelements(element) - 1
+                    array_offset = offset + array_i * elem_bytes
+                    clear_udt_with_varstrings n$, udtetype(element) AND 511, buf, array_offset
+                NEXT
             ELSE
                 WriteBufLine buf, "memset((char*)" + n$ + "+" + STR$(offset) + ",0," + STR$(udtesize(element) \ 8) + ");"
             END IF
@@ -696,18 +692,12 @@ SUB clear_udt_with_varstrings (n$, udt, buf, base_offset)
             IF (udtetype(element) AND ISFIXEDLENGTH) = 0 THEN
                 WriteBufLine buf, "(*(qbs**)(((char*)" + n$ + ")+" + STR$(offset) + "))->len=0;"
             ELSE
-                WriteBufLine buf, "memset((char*)" + n$ + "+" + STR$(offset) + ",0," + STR$(udtesize(element) \ 8) + ");"
+                WriteBufLine buf, "memset((char*)" + n$ + "+" + STR$(offset) + ",32," + STR$(udtesize(element) \ 8) + ");"
             END IF
+        ELSEIF udtetype(element) AND ISUDT THEN
+            clear_udt_with_varstrings n$, udtetype(element) AND 511, buf, offset
         ELSE
-            IF udtetype(element) AND ISUDT THEN
-                IF udtxvariable(udtetype(element) AND 511) THEN
-                    clear_udt_with_varstrings n$, udtetype(element) AND 511, buf, offset
-                ELSE
-                    WriteBufLine buf, "memset((char*)" + n$ + "+" + STR$(offset) + ",0," + STR$(udtesize(element) \ 8) + ");"
-                END IF
-            ELSE
-                WriteBufLine buf, "memset((char*)" + n$ + "+" + STR$(offset) + ",0," + STR$(udtesize(element) \ 8) + ");"
-            END IF
+            WriteBufLine buf, "memset((char*)" + n$ + "+" + STR$(offset) + ",0," + STR$(udtesize(element) \ 8) + ");"
         END IF
         offset = offset + udtesize(element) \ 8
         element = udtenext(element)
@@ -716,9 +706,8 @@ END SUB
 
 SUB clear_array_udt_varstrings (n$, udt, base_offset, bytesperelement$, acc$)
     ' Build the code that clears one element of a static or dynamic array-of-UDT without destroying
-    ' the array container itself. This is used by ERASE on arrays whose element type contains nested
-    ' variable-length data, including the new case where a static TYPE member itself is an inline array.
-    IF NOT udtxvariable(udt) THEN EXIT SUB
+    ' the array container itself. This covers nested numeric members, fixed-length strings,
+    ' variable-length strings, nested UDTs, and inline static member arrays.
     offset = base_offset
     element = udtxnext(udt)
     DO WHILE element
@@ -731,17 +720,13 @@ SUB clear_array_udt_varstrings (n$, udt, base_offset, bytesperelement$, acc$)
                         acc$ = acc$ + CHR$(13) + CHR$(10) + "(*(qbs**)(" + n$ + "[0]+" + bytesperelement$ + "*tmp_long+" + STR$(array_offset) + "))->len=0;"
                     NEXT
                 ELSE
-                    acc$ = acc$ + CHR$(13) + CHR$(10) + "memset((void*)(" + n$ + "[0]+" + bytesperelement$ + "*tmp_long+" + STR$(offset) + "),0," + STR$(udtesize(element) \ 8) + ");"
+                    acc$ = acc$ + CHR$(13) + CHR$(10) + "memset((void*)(" + n$ + "[0]+" + bytesperelement$ + "*tmp_long+" + STR$(offset) + "),32," + STR$(udtesize(element) \ 8) + ");"
                 END IF
             ELSEIF udtetype(element) AND ISUDT THEN
-                IF udtxvariable(udtetype(element) AND 511) THEN
-                    FOR array_i = 0 TO udtearrayelements(element) - 1
-                        array_offset = offset + array_i * elem_bytes
-                        clear_array_udt_varstrings n$, udtetype(element) AND 511, array_offset, bytesperelement$, acc$
-                    NEXT
-                ELSE
-                    acc$ = acc$ + CHR$(13) + CHR$(10) + "memset((void*)(" + n$ + "[0]+" + bytesperelement$ + "*tmp_long+" + STR$(offset) + "),0," + STR$(udtesize(element) \ 8) + ");"
-                END IF
+                FOR array_i = 0 TO udtearrayelements(element) - 1
+                    array_offset = offset + array_i * elem_bytes
+                    clear_array_udt_varstrings n$, udtetype(element) AND 511, array_offset, bytesperelement$, acc$
+                NEXT
             ELSE
                 acc$ = acc$ + CHR$(13) + CHR$(10) + "memset((void*)(" + n$ + "[0]+" + bytesperelement$ + "*tmp_long+" + STR$(offset) + "),0," + STR$(udtesize(element) \ 8) + ");"
             END IF
@@ -749,18 +734,12 @@ SUB clear_array_udt_varstrings (n$, udt, base_offset, bytesperelement$, acc$)
             IF (udtetype(element) AND ISFIXEDLENGTH) = 0 THEN
                 acc$ = acc$ + CHR$(13) + CHR$(10) + "(*(qbs**)(" + n$ + "[0]+" + bytesperelement$ + "*tmp_long+" + STR$(offset) + "))->len=0;"
             ELSE
-                acc$ = acc$ + CHR$(13) + CHR$(10) + "memset((void*)(" + n$ + "[0]+" + bytesperelement$ + "*tmp_long+" + STR$(offset) + "),0," + STR$(udtesize(element) \ 8) + ");"
+                acc$ = acc$ + CHR$(13) + CHR$(10) + "memset((void*)(" + n$ + "[0]+" + bytesperelement$ + "*tmp_long+" + STR$(offset) + "),32," + STR$(udtesize(element) \ 8) + ");"
             END IF
+        ELSEIF udtetype(element) AND ISUDT THEN
+            clear_array_udt_varstrings n$, udtetype(element) AND 511, offset, bytesperelement$, acc$
         ELSE
-            IF udtetype(element) AND ISUDT THEN
-                IF udtxvariable(udtetype(element) AND 511) THEN
-                    clear_array_udt_varstrings n$, udtetype(element) AND 511, offset, bytesperelement$, acc$
-                ELSE
-                    acc$ = acc$ + CHR$(13) + CHR$(10) + "memset((void*)(" + n$ + "[0]+" + bytesperelement$ + "*tmp_long+" + STR$(offset) + "),0," + STR$(udtesize(element) \ 8) + ");"
-                END IF
-            ELSE
-                acc$ = acc$ + CHR$(13) + CHR$(10) + "memset((void*)(" + n$ + "[0]+" + bytesperelement$ + "*tmp_long+" + STR$(offset) + "),0," + STR$(udtesize(element) \ 8) + ");"
-            END IF
+            acc$ = acc$ + CHR$(13) + CHR$(10) + "memset((void*)(" + n$ + "[0]+" + bytesperelement$ + "*tmp_long+" + STR$(offset) + "),0," + STR$(udtesize(element) \ 8) + ");"
         END IF
         offset = offset + udtesize(element) \ 8
         element = udtenext(element)
