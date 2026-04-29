@@ -1,0 +1,106 @@
+qbs* FUNC_GETELEMENTSPECIAL(qbs*_FUNC_GETELEMENTSPECIAL_STRING_SAVEA,int32*_FUNC_GETELEMENTSPECIAL_LONG_ELENUM){
+qbs *tqbs;
+ptrszint tmp_long;
+int32 tmp_fileno;
+uint32 qbs_tmp_base=qbs_tmp_list_nexti;
+uint8 *tmp_mem_static_pointer=mem_static_pointer;
+uint32 tmp_cmem_sp=cmem_sp;
+#include "data35.txt"
+mem_lock *sf_mem_lock;
+new_mem_lock();
+sf_mem_lock=mem_lock_tmp;
+sf_mem_lock->type=3;
+if (is_error_pending()) goto exit_subfunc;
+do{
+qbs_set(_FUNC_GETELEMENTSPECIAL_STRING_A,_FUNC_GETELEMENTSPECIAL_STRING_SAVEA);
+qbs_cleanup(qbs_tmp_base,0);
+if(!qbevent)break;evnt(21571);}while(r);
+S_24852:;
+if ((qbs_cleanup(qbs_tmp_base,qbs_equal(_FUNC_GETELEMENTSPECIAL_STRING_A,qbs_new_txt_len("",0))))||is_error_pending()){
+if(qbevent){evnt(21572);if(r)goto S_24852;}
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(21572);}while(r);
+}
+do{
+*_FUNC_GETELEMENTSPECIAL_LONG_N= 1 ;
+if(!qbevent)break;evnt(21574);}while(r);
+do{
+*_FUNC_GETELEMENTSPECIAL_LONG_P= 1 ;
+if(!qbevent)break;evnt(21575);}while(r);
+LABEL_GETELEMENTSPECIALNEXT:;
+if(qbevent){evnt(21576);r=0;}
+do{
+*_FUNC_GETELEMENTSPECIAL_LONG_I=func_instr(*_FUNC_GETELEMENTSPECIAL_LONG_P,_FUNC_GETELEMENTSPECIAL_STRING_A,__STRING1_SP,0|1);
+qbs_cleanup(qbs_tmp_base,0);
+if(!qbevent)break;evnt(21577);}while(r);
+do{
+*_FUNC_GETELEMENTSPECIAL_LONG_I2=func_instr(*_FUNC_GETELEMENTSPECIAL_LONG_P,_FUNC_GETELEMENTSPECIAL_STRING_A,func_chr( 34 ),0|1);
+qbs_cleanup(qbs_tmp_base,0);
+if(!qbevent)break;evnt(21580);}while(r);
+S_24859:;
+if (((-(*_FUNC_GETELEMENTSPECIAL_LONG_I2<*_FUNC_GETELEMENTSPECIAL_LONG_I))&(-(*_FUNC_GETELEMENTSPECIAL_LONG_I2!= 0 )))||is_error_pending()){
+if(qbevent){evnt(21581);if(r)goto S_24859;}
+do{
+*_FUNC_GETELEMENTSPECIAL_LONG_I3=func_instr(*_FUNC_GETELEMENTSPECIAL_LONG_I2+ 1 ,_FUNC_GETELEMENTSPECIAL_STRING_A,func_chr( 34 ),0|1);
+qbs_cleanup(qbs_tmp_base,0);
+if(!qbevent)break;evnt(21582);}while(r);
+S_24861:;
+if ((-(*_FUNC_GETELEMENTSPECIAL_LONG_I3== 0 ))||is_error_pending()){
+if(qbevent){evnt(21582);if(r)goto S_24861;}
+do{
+SUB_GIVE_ERROR(qbs_add(qbs_new_txt_len("Expected ",9),func_chr( 34 )));
+qbs_cleanup(qbs_tmp_base,0);
+if(!qbevent)break;evnt(21582);}while(r);
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(21582);}while(r);
+}
+do{
+*_FUNC_GETELEMENTSPECIAL_LONG_I=func_instr(*_FUNC_GETELEMENTSPECIAL_LONG_I3,_FUNC_GETELEMENTSPECIAL_STRING_A,__STRING1_SP,0|1);
+qbs_cleanup(qbs_tmp_base,0);
+if(!qbevent)break;evnt(21583);}while(r);
+}
+S_24867:;
+if ((-(*_FUNC_GETELEMENTSPECIAL_LONG_ELENUM==*_FUNC_GETELEMENTSPECIAL_LONG_N))||is_error_pending()){
+if(qbevent){evnt(21586);if(r)goto S_24867;}
+S_24868:;
+if ((*_FUNC_GETELEMENTSPECIAL_LONG_I)||is_error_pending()){
+if(qbevent){evnt(21587);if(r)goto S_24868;}
+do{
+qbs_set(_FUNC_GETELEMENTSPECIAL_STRING_GETELEMENTSPECIAL,func_mid(_FUNC_GETELEMENTSPECIAL_STRING_A,*_FUNC_GETELEMENTSPECIAL_LONG_P,*_FUNC_GETELEMENTSPECIAL_LONG_I-*_FUNC_GETELEMENTSPECIAL_LONG_P,0|1));
+qbs_cleanup(qbs_tmp_base,0);
+if(!qbevent)break;evnt(21588);}while(r);
+}else{
+do{
+qbs_set(_FUNC_GETELEMENTSPECIAL_STRING_GETELEMENTSPECIAL,qbs_right(_FUNC_GETELEMENTSPECIAL_STRING_A,_FUNC_GETELEMENTSPECIAL_STRING_A->len-*_FUNC_GETELEMENTSPECIAL_LONG_P+ 1 ));
+qbs_cleanup(qbs_tmp_base,0);
+if(!qbevent)break;evnt(21590);}while(r);
+}
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(21592);}while(r);
+}
+S_24875:;
+if ((-(*_FUNC_GETELEMENTSPECIAL_LONG_I== 0 ))||is_error_pending()){
+if(qbevent){evnt(21595);if(r)goto S_24875;}
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(21595);}while(r);
+}
+do{
+*_FUNC_GETELEMENTSPECIAL_LONG_N=*_FUNC_GETELEMENTSPECIAL_LONG_N+ 1 ;
+if(!qbevent)break;evnt(21596);}while(r);
+do{
+*_FUNC_GETELEMENTSPECIAL_LONG_P=*_FUNC_GETELEMENTSPECIAL_LONG_I+ 1 ;
+if(!qbevent)break;evnt(21597);}while(r);
+do{
+goto LABEL_GETELEMENTSPECIALNEXT;
+if(!qbevent)break;evnt(21598);}while(r);
+exit_subfunc:;
+free_mem_lock(sf_mem_lock);
+#include "free35.txt"
+if ((tmp_mem_static_pointer>=mem_static)&&(tmp_mem_static_pointer<=mem_static_limit)) mem_static_pointer=tmp_mem_static_pointer; else mem_static_pointer=mem_static;
+cmem_sp=tmp_cmem_sp;
+qbs_maketmp(_FUNC_GETELEMENTSPECIAL_STRING_GETELEMENTSPECIAL);return _FUNC_GETELEMENTSPECIAL_STRING_GETELEMENTSPECIAL;
+}

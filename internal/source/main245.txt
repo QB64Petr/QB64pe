@@ -1,0 +1,70 @@
+int32 FUNC_ISUINTEGER(qbs*_FUNC_ISUINTEGER_STRING_I){
+qbs *tqbs;
+ptrszint tmp_long;
+int32 tmp_fileno;
+uint32 qbs_tmp_base=qbs_tmp_list_nexti;
+uint8 *tmp_mem_static_pointer=mem_static_pointer;
+uint32 tmp_cmem_sp=cmem_sp;
+#include "data245.txt"
+mem_lock *sf_mem_lock;
+new_mem_lock();
+sf_mem_lock=mem_lock_tmp;
+sf_mem_lock->type=3;
+if (is_error_pending()) goto exit_subfunc;
+S_39080:;
+if ((qbs_cleanup(qbs_tmp_base,-(_FUNC_ISUINTEGER_STRING_I->len== 0 )))||is_error_pending()){
+if(qbevent){evnt(25759,864,"type.bas");if(r)goto S_39080;}
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,864,"type.bas");}while(r);
+}
+S_39083:;
+if ((qbs_cleanup(qbs_tmp_base,(-(qbs_asc(_FUNC_ISUINTEGER_STRING_I, 1 )== 48 ))&(-(_FUNC_ISUINTEGER_STRING_I->len> 1 ))))||is_error_pending()){
+if(qbevent){evnt(25759,865,"type.bas");if(r)goto S_39083;}
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,865,"type.bas");}while(r);
+}
+S_39086:;
+fornext_value4604= 1 ;
+fornext_finalvalue4604=_FUNC_ISUINTEGER_STRING_I->len;
+fornext_step4604= 1 ;
+if (fornext_step4604<0) fornext_step_negative4604=1; else fornext_step_negative4604=0;
+if (is_error_pending()) goto fornext_error4604;
+goto fornext_entrylabel4604;
+while(1){
+fornext_value4604=fornext_step4604+(*_FUNC_ISUINTEGER_LONG_C);
+fornext_entrylabel4604:
+*_FUNC_ISUINTEGER_LONG_C=fornext_value4604;
+qbs_cleanup(qbs_tmp_base,0);
+if (fornext_step_negative4604){
+if (fornext_value4604<fornext_finalvalue4604) break;
+}else{
+if (fornext_value4604>fornext_finalvalue4604) break;
+}
+fornext_error4604:;
+if(qbevent){evnt(25759,866,"type.bas");if(r)goto S_39086;}
+do{
+*_FUNC_ISUINTEGER_LONG_V=qbs_asc(_FUNC_ISUINTEGER_STRING_I,*_FUNC_ISUINTEGER_LONG_C);
+qbs_cleanup(qbs_tmp_base,0);
+if(!qbevent)break;evnt(25759,867,"type.bas");}while(r);
+S_39088:;
+if (((-(*_FUNC_ISUINTEGER_LONG_V< 48 ))|(-(*_FUNC_ISUINTEGER_LONG_V> 57 )))||is_error_pending()){
+if(qbevent){evnt(25759,868,"type.bas");if(r)goto S_39088;}
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,868,"type.bas");}while(r);
+}
+fornext_continue_4603:;
+}
+fornext_exit_4603:;
+do{
+*_FUNC_ISUINTEGER_LONG_ISUINTEGER= -1 ;
+if(!qbevent)break;evnt(25759,870,"type.bas");}while(r);
+exit_subfunc:;
+free_mem_lock(sf_mem_lock);
+#include "free245.txt"
+if ((tmp_mem_static_pointer>=mem_static)&&(tmp_mem_static_pointer<=mem_static_limit)) mem_static_pointer=tmp_mem_static_pointer; else mem_static_pointer=mem_static;
+cmem_sp=tmp_cmem_sp;
+return *_FUNC_ISUINTEGER_LONG_ISUINTEGER;
+}

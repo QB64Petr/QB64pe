@@ -1,0 +1,11 @@
+qbs*oldstr4008=NULL;
+if(_SUB_REMOVEELEMENT_STRING_A->tmp||_SUB_REMOVEELEMENT_STRING_A->fixed||_SUB_REMOVEELEMENT_STRING_A->readonly){
+oldstr4008=_SUB_REMOVEELEMENT_STRING_A;
+if (oldstr4008->cmem_descriptor){
+_SUB_REMOVEELEMENT_STRING_A=qbs_new_cmem(oldstr4008->len,0);
+}else{
+_SUB_REMOVEELEMENT_STRING_A=qbs_new(oldstr4008->len,0);
+}
+memcpy(_SUB_REMOVEELEMENT_STRING_A->chr,oldstr4008->chr,oldstr4008->len);
+}
+int32 pass4009;

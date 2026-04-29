@@ -1,0 +1,9 @@
+if(oldstr3945){
+if(oldstr3945->fixed)qbs_set(oldstr3945,_FUNC_COPYFILE_STRING_SOURCEFILE);
+qbs_free(_FUNC_COPYFILE_STRING_SOURCEFILE);
+}
+if(oldstr3946){
+if(oldstr3946->fixed)qbs_set(oldstr3946,_FUNC_COPYFILE_STRING_DESTFILE);
+qbs_free(_FUNC_COPYFILE_STRING_DESTFILE);
+}
+qbs_free(_FUNC_COPYFILE_STRING_DAT);

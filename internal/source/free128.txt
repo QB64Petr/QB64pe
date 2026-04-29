@@ -1,0 +1,8 @@
+if(oldstr4061){
+if(oldstr4061->fixed)qbs_set(oldstr4061,_FUNC_READCHUNK_STRING_A);
+qbs_free(_FUNC_READCHUNK_STRING_A);
+}
+if(oldstr4062){
+if(oldstr4062->fixed)qbs_set(oldstr4062,_FUNC_READCHUNK_STRING_LAST_CHARACTER);
+qbs_free(_FUNC_READCHUNK_STRING_LAST_CHARACTER);
+}

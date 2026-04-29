@@ -1,0 +1,396 @@
+int32 FUNC_SYMBOLTYPE(qbs*_FUNC_SYMBOLTYPE_STRING_S){
+qbs *tqbs;
+ptrszint tmp_long;
+int32 tmp_fileno;
+uint32 qbs_tmp_base=qbs_tmp_list_nexti;
+uint8 *tmp_mem_static_pointer=mem_static_pointer;
+uint32 tmp_cmem_sp=cmem_sp;
+#include "data228.txt"
+mem_lock *sf_mem_lock;
+new_mem_lock();
+sf_mem_lock=mem_lock_tmp;
+sf_mem_lock->type=3;
+if (is_error_pending()) goto exit_subfunc;
+S_38096:;
+if ((qbs_cleanup(qbs_tmp_base,-(_FUNC_SYMBOLTYPE_STRING_S->len== 0 )))||is_error_pending()){
+if(qbevent){evnt(25759,171,"type.bas");if(r)goto S_38096;}
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,171,"type.bas");}while(r);
+}
+do{
+*_FUNC_SYMBOLTYPE_LONG_A=qbs_asc(_FUNC_SYMBOLTYPE_STRING_S);
+qbs_cleanup(qbs_tmp_base,0);
+if(!qbevent)break;evnt(25759,173,"type.bas");}while(r);
+do{
+*_FUNC_SYMBOLTYPE_LONG_L=_FUNC_SYMBOLTYPE_STRING_S->len;
+qbs_cleanup(qbs_tmp_base,0);
+if(!qbevent)break;evnt(25759,174,"type.bas");}while(r);
+S_38101:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_A== 37 ))||is_error_pending()){
+if(qbevent){evnt(25759,175,"type.bas");if(r)goto S_38101;}
+S_38102:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_L== 1 ))||is_error_pending()){
+if(qbevent){evnt(25759,176,"type.bas");if(r)goto S_38102;}
+do{
+*_FUNC_SYMBOLTYPE_LONG_SYMBOLTYPE= 16 ;
+if(!qbevent)break;evnt(25759,176,"type.bas");}while(r);
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,176,"type.bas");}while(r);
+}
+S_38106:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_L> 2 ))||is_error_pending()){
+if(qbevent){evnt(25759,177,"type.bas");if(r)goto S_38106;}
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,177,"type.bas");}while(r);
+}
+S_38109:;
+if ((qbs_cleanup(qbs_tmp_base,-(qbs_asc(_FUNC_SYMBOLTYPE_STRING_S, 2 )== 37 )))||is_error_pending()){
+if(qbevent){evnt(25759,178,"type.bas");if(r)goto S_38109;}
+do{
+*_FUNC_SYMBOLTYPE_LONG_SYMBOLTYPE= 8 ;
+if(!qbevent)break;evnt(25759,178,"type.bas");}while(r);
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,178,"type.bas");}while(r);
+}
+S_38113:;
+if ((qbs_cleanup(qbs_tmp_base,-(qbs_asc(_FUNC_SYMBOLTYPE_STRING_S, 2 )== 38 )))||is_error_pending()){
+if(qbevent){evnt(25759,179,"type.bas");if(r)goto S_38113;}
+do{
+*_FUNC_SYMBOLTYPE_LONG_SYMBOLTYPE=*__LONG_OFFSETTYPE-*__LONG_ISPOINTER;
+if(!qbevent)break;evnt(25759,179,"type.bas");}while(r);
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,179,"type.bas");}while(r);
+}
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,180,"type.bas");}while(r);
+}
+S_38119:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_A== 38 ))||is_error_pending()){
+if(qbevent){evnt(25759,182,"type.bas");if(r)goto S_38119;}
+S_38120:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_L== 1 ))||is_error_pending()){
+if(qbevent){evnt(25759,183,"type.bas");if(r)goto S_38120;}
+do{
+*_FUNC_SYMBOLTYPE_LONG_SYMBOLTYPE= 32 ;
+if(!qbevent)break;evnt(25759,183,"type.bas");}while(r);
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,183,"type.bas");}while(r);
+}
+S_38124:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_L> 2 ))||is_error_pending()){
+if(qbevent){evnt(25759,184,"type.bas");if(r)goto S_38124;}
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,184,"type.bas");}while(r);
+}
+S_38127:;
+if ((qbs_cleanup(qbs_tmp_base,-(qbs_asc(_FUNC_SYMBOLTYPE_STRING_S, 2 )== 38 )))||is_error_pending()){
+if(qbevent){evnt(25759,185,"type.bas");if(r)goto S_38127;}
+do{
+*_FUNC_SYMBOLTYPE_LONG_SYMBOLTYPE= 64 ;
+if(!qbevent)break;evnt(25759,185,"type.bas");}while(r);
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,185,"type.bas");}while(r);
+}
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,186,"type.bas");}while(r);
+}
+S_38133:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_A== 33 ))||is_error_pending()){
+if(qbevent){evnt(25759,188,"type.bas");if(r)goto S_38133;}
+S_38134:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_L== 1 ))||is_error_pending()){
+if(qbevent){evnt(25759,189,"type.bas");if(r)goto S_38134;}
+do{
+*_FUNC_SYMBOLTYPE_LONG_SYMBOLTYPE= 32 +*__LONG_ISFLOAT;
+if(!qbevent)break;evnt(25759,189,"type.bas");}while(r);
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,189,"type.bas");}while(r);
+}
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,190,"type.bas");}while(r);
+}
+S_38140:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_A== 35 ))||is_error_pending()){
+if(qbevent){evnt(25759,192,"type.bas");if(r)goto S_38140;}
+S_38141:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_L== 1 ))||is_error_pending()){
+if(qbevent){evnt(25759,193,"type.bas");if(r)goto S_38141;}
+do{
+*_FUNC_SYMBOLTYPE_LONG_SYMBOLTYPE= 64 +*__LONG_ISFLOAT;
+if(!qbevent)break;evnt(25759,193,"type.bas");}while(r);
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,193,"type.bas");}while(r);
+}
+S_38145:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_L> 2 ))||is_error_pending()){
+if(qbevent){evnt(25759,194,"type.bas");if(r)goto S_38145;}
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,194,"type.bas");}while(r);
+}
+S_38148:;
+if ((qbs_cleanup(qbs_tmp_base,-(qbs_asc(_FUNC_SYMBOLTYPE_STRING_S, 2 )== 35 )))||is_error_pending()){
+if(qbevent){evnt(25759,195,"type.bas");if(r)goto S_38148;}
+do{
+*_FUNC_SYMBOLTYPE_LONG_SYMBOLTYPE= 64 +*__LONG_ISFLOAT;
+if(!qbevent)break;evnt(25759,195,"type.bas");}while(r);
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,195,"type.bas");}while(r);
+}
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,196,"type.bas");}while(r);
+}
+S_38154:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_A== 36 ))||is_error_pending()){
+if(qbevent){evnt(25759,198,"type.bas");if(r)goto S_38154;}
+S_38155:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_L== 1 ))||is_error_pending()){
+if(qbevent){evnt(25759,199,"type.bas");if(r)goto S_38155;}
+do{
+*_FUNC_SYMBOLTYPE_LONG_SYMBOLTYPE=*__LONG_ISSTRING;
+if(!qbevent)break;evnt(25759,199,"type.bas");}while(r);
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,199,"type.bas");}while(r);
+}
+S_38159:;
+if ((qbs_cleanup(qbs_tmp_base,FUNC_ISUINTEGER(qbs_right(_FUNC_SYMBOLTYPE_STRING_S,*_FUNC_SYMBOLTYPE_LONG_L- 1 ))))||is_error_pending()){
+if(qbevent){evnt(25759,200,"type.bas");if(r)goto S_38159;}
+S_38160:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_L>=( 1 + 10 )))||is_error_pending()){
+if(qbevent){evnt(25759,201,"type.bas");if(r)goto S_38160;}
+S_38161:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_L>( 1 + 10 )))||is_error_pending()){
+if(qbevent){evnt(25759,202,"type.bas");if(r)goto S_38161;}
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,202,"type.bas");}while(r);
+}
+S_38164:;
+if ((qbs_cleanup(qbs_tmp_base,qbs_greaterthan(_FUNC_SYMBOLTYPE_STRING_S,qbs_new_txt_len("$2147483647",11))))||is_error_pending()){
+if(qbevent){evnt(25759,203,"type.bas");if(r)goto S_38164;}
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,203,"type.bas");}while(r);
+}
+}
+do{
+*__LONG_SYMBOLTYPE_SIZE=qbr(qbs_val<long double>(qbs_right(_FUNC_SYMBOLTYPE_STRING_S,*_FUNC_SYMBOLTYPE_LONG_L- 1 )));
+qbs_cleanup(qbs_tmp_base,0);
+if(!qbevent)break;evnt(25759,205,"type.bas");}while(r);
+do{
+*_FUNC_SYMBOLTYPE_LONG_SYMBOLTYPE=*__LONG_ISSTRING+*__LONG_ISFIXEDLENGTH;
+if(!qbevent)break;evnt(25759,206,"type.bas");}while(r);
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,207,"type.bas");}while(r);
+}
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,209,"type.bas");}while(r);
+}
+S_38174:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_A== 96 ))||is_error_pending()){
+if(qbevent){evnt(25759,211,"type.bas");if(r)goto S_38174;}
+S_38175:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_L== 1 ))||is_error_pending()){
+if(qbevent){evnt(25759,212,"type.bas");if(r)goto S_38175;}
+do{
+*_FUNC_SYMBOLTYPE_LONG_SYMBOLTYPE= 1 +*__LONG_ISOFFSETINBITS;
+if(!qbevent)break;evnt(25759,212,"type.bas");}while(r);
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,212,"type.bas");}while(r);
+}
+S_38179:;
+if ((qbs_cleanup(qbs_tmp_base,FUNC_ISUINTEGER(qbs_right(_FUNC_SYMBOLTYPE_STRING_S,*_FUNC_SYMBOLTYPE_LONG_L- 1 ))))||is_error_pending()){
+if(qbevent){evnt(25759,213,"type.bas");if(r)goto S_38179;}
+S_38180:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_L> 3 ))||is_error_pending()){
+if(qbevent){evnt(25759,214,"type.bas");if(r)goto S_38180;}
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,214,"type.bas");}while(r);
+}
+do{
+*_FUNC_SYMBOLTYPE_LONG_N=qbr(qbs_val<long double>(qbs_right(_FUNC_SYMBOLTYPE_STRING_S,*_FUNC_SYMBOLTYPE_LONG_L- 1 )));
+qbs_cleanup(qbs_tmp_base,0);
+if(!qbevent)break;evnt(25759,215,"type.bas");}while(r);
+S_38184:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_N> 64 ))||is_error_pending()){
+if(qbevent){evnt(25759,216,"type.bas");if(r)goto S_38184;}
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,216,"type.bas");}while(r);
+}
+do{
+*_FUNC_SYMBOLTYPE_LONG_SYMBOLTYPE=*_FUNC_SYMBOLTYPE_LONG_N+*__LONG_ISOFFSETINBITS;
+if(!qbevent)break;evnt(25759,217,"type.bas");}while(r);
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,217,"type.bas");}while(r);
+}
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,219,"type.bas");}while(r);
+}
+S_38192:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_A== 126 ))||is_error_pending()){
+if(qbevent){evnt(25759,221,"type.bas");if(r)goto S_38192;}
+S_38193:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_L== 1 ))||is_error_pending()){
+if(qbevent){evnt(25759,222,"type.bas");if(r)goto S_38193;}
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,222,"type.bas");}while(r);
+}
+do{
+*_FUNC_SYMBOLTYPE_LONG_A=qbs_asc(_FUNC_SYMBOLTYPE_STRING_S, 2 );
+qbs_cleanup(qbs_tmp_base,0);
+if(!qbevent)break;evnt(25759,223,"type.bas");}while(r);
+S_38197:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_A== 37 ))||is_error_pending()){
+if(qbevent){evnt(25759,224,"type.bas");if(r)goto S_38197;}
+S_38198:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_L== 2 ))||is_error_pending()){
+if(qbevent){evnt(25759,225,"type.bas");if(r)goto S_38198;}
+do{
+*_FUNC_SYMBOLTYPE_LONG_SYMBOLTYPE= 16 +*__LONG_ISUNSIGNED;
+if(!qbevent)break;evnt(25759,225,"type.bas");}while(r);
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,225,"type.bas");}while(r);
+}
+S_38202:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_L> 3 ))||is_error_pending()){
+if(qbevent){evnt(25759,226,"type.bas");if(r)goto S_38202;}
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,226,"type.bas");}while(r);
+}
+S_38205:;
+if ((qbs_cleanup(qbs_tmp_base,-(qbs_asc(_FUNC_SYMBOLTYPE_STRING_S, 3 )== 37 )))||is_error_pending()){
+if(qbevent){evnt(25759,227,"type.bas");if(r)goto S_38205;}
+do{
+*_FUNC_SYMBOLTYPE_LONG_SYMBOLTYPE= 8 +*__LONG_ISUNSIGNED;
+if(!qbevent)break;evnt(25759,227,"type.bas");}while(r);
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,227,"type.bas");}while(r);
+}
+S_38209:;
+if ((qbs_cleanup(qbs_tmp_base,-(qbs_asc(_FUNC_SYMBOLTYPE_STRING_S, 3 )== 38 )))||is_error_pending()){
+if(qbevent){evnt(25759,228,"type.bas");if(r)goto S_38209;}
+do{
+*_FUNC_SYMBOLTYPE_LONG_SYMBOLTYPE=*__LONG_UOFFSETTYPE-*__LONG_ISPOINTER;
+if(!qbevent)break;evnt(25759,228,"type.bas");}while(r);
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,228,"type.bas");}while(r);
+}
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,229,"type.bas");}while(r);
+}
+S_38215:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_A== 38 ))||is_error_pending()){
+if(qbevent){evnt(25759,231,"type.bas");if(r)goto S_38215;}
+S_38216:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_L== 2 ))||is_error_pending()){
+if(qbevent){evnt(25759,232,"type.bas");if(r)goto S_38216;}
+do{
+*_FUNC_SYMBOLTYPE_LONG_SYMBOLTYPE= 32 +*__LONG_ISUNSIGNED;
+if(!qbevent)break;evnt(25759,232,"type.bas");}while(r);
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,232,"type.bas");}while(r);
+}
+S_38220:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_L> 3 ))||is_error_pending()){
+if(qbevent){evnt(25759,233,"type.bas");if(r)goto S_38220;}
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,233,"type.bas");}while(r);
+}
+S_38223:;
+if ((qbs_cleanup(qbs_tmp_base,-(qbs_asc(_FUNC_SYMBOLTYPE_STRING_S, 3 )== 38 )))||is_error_pending()){
+if(qbevent){evnt(25759,234,"type.bas");if(r)goto S_38223;}
+do{
+*_FUNC_SYMBOLTYPE_LONG_SYMBOLTYPE= 64 +*__LONG_ISUNSIGNED;
+if(!qbevent)break;evnt(25759,234,"type.bas");}while(r);
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,234,"type.bas");}while(r);
+}
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,235,"type.bas");}while(r);
+}
+S_38229:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_A== 96 ))||is_error_pending()){
+if(qbevent){evnt(25759,237,"type.bas");if(r)goto S_38229;}
+S_38230:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_L== 2 ))||is_error_pending()){
+if(qbevent){evnt(25759,238,"type.bas");if(r)goto S_38230;}
+do{
+*_FUNC_SYMBOLTYPE_LONG_SYMBOLTYPE= 1 +*__LONG_ISOFFSETINBITS+*__LONG_ISUNSIGNED;
+if(!qbevent)break;evnt(25759,238,"type.bas");}while(r);
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,238,"type.bas");}while(r);
+}
+S_38234:;
+if ((qbs_cleanup(qbs_tmp_base,FUNC_ISUINTEGER(qbs_right(_FUNC_SYMBOLTYPE_STRING_S,*_FUNC_SYMBOLTYPE_LONG_L- 2 ))))||is_error_pending()){
+if(qbevent){evnt(25759,239,"type.bas");if(r)goto S_38234;}
+S_38235:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_L> 4 ))||is_error_pending()){
+if(qbevent){evnt(25759,240,"type.bas");if(r)goto S_38235;}
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,240,"type.bas");}while(r);
+}
+do{
+*_FUNC_SYMBOLTYPE_LONG_N=qbr(qbs_val<long double>(qbs_right(_FUNC_SYMBOLTYPE_STRING_S,*_FUNC_SYMBOLTYPE_LONG_L- 2 )));
+qbs_cleanup(qbs_tmp_base,0);
+if(!qbevent)break;evnt(25759,241,"type.bas");}while(r);
+S_38239:;
+if ((-(*_FUNC_SYMBOLTYPE_LONG_N> 64 ))||is_error_pending()){
+if(qbevent){evnt(25759,242,"type.bas");if(r)goto S_38239;}
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,242,"type.bas");}while(r);
+}
+do{
+*_FUNC_SYMBOLTYPE_LONG_SYMBOLTYPE=*_FUNC_SYMBOLTYPE_LONG_N+*__LONG_ISOFFSETINBITS+*__LONG_ISUNSIGNED;
+if(!qbevent)break;evnt(25759,243,"type.bas");}while(r);
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,243,"type.bas");}while(r);
+}
+do{
+goto exit_subfunc;
+if(!qbevent)break;evnt(25759,245,"type.bas");}while(r);
+}
+}
+exit_subfunc:;
+free_mem_lock(sf_mem_lock);
+#include "free228.txt"
+if ((tmp_mem_static_pointer>=mem_static)&&(tmp_mem_static_pointer<=mem_static_limit)) mem_static_pointer=tmp_mem_static_pointer; else mem_static_pointer=mem_static;
+cmem_sp=tmp_cmem_sp;
+return *_FUNC_SYMBOLTYPE_LONG_SYMBOLTYPE;
+}

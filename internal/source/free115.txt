@@ -1,0 +1,4 @@
+if(oldstr4008){
+if(oldstr4008->fixed)qbs_set(oldstr4008,_SUB_REMOVEELEMENT_STRING_A);
+qbs_free(_SUB_REMOVEELEMENT_STRING_A);
+}

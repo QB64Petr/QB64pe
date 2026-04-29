@@ -1,0 +1,4 @@
+if(oldstr4039){
+if(oldstr4039->fixed)qbs_set(oldstr4039,_FUNC_ELEMENTISSTRING_STRING_ELE);
+qbs_free(_FUNC_ELEMENTISSTRING_STRING_ELE);
+}
